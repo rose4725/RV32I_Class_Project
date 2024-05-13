@@ -8,7 +8,15 @@
 
 `timescale 1ns/1ns
 `define simdelay 1
+ 
+// CPU main module
+//// Input 
+// Instruction, data from Mem
 
+//// Output
+// PC(program counter)
+// Memwrite control signal
+// Mem address and data to write to MEM 
 module rv32i_cpu (
 		      input         clk, reset,
             output [31:0] pc,		  		// program counter for instruction fetch
@@ -18,12 +26,16 @@ module rv32i_cpu (
             output [31:0] MemWdata, 	// data to write to memory
             input  [31:0] MemRdata); 	// data read from memory
 
+  // Wires for some instructions 
   wire        auipc, lui;
+  // Control signals for ALU
   wire        alusrc, regwrite;
   wire [4:0]  alucontrol;
+  // Control signals for Memory Access
   wire        memtoreg, memwrite;
+  // Control signals for Branch instructions(modify PC)
   wire        branch, jal, jalr;
-
+  // Assign wire to output signal
   assign Memwrite = memwrite ;
 
   // Instantiate Controller
@@ -131,22 +143,38 @@ module maindec(input  [6:0] opcode,
                output       jal,
                output       jalr);
 
+  // Control signals
   reg [8:0] controls;
+  assign {auipc,      // 1
+          lui,        // 2
+          regwrite,   // 3
+          alusrc,     // 4
+			    memtoreg,   // 5
+          memwrite,   // 6
+          branch,     // 7
+          jal,        // 8
+			    jalr        // 9
+          } = controls;
 
-  assign {auipc, lui, regwrite, alusrc, 
-			 memtoreg, memwrite, branch, jal, 
-			 jalr} = controls;
-
+  // Set type of instructions by opcode 
   always @(*)
   begin
     case(opcode)
+      // R type: regwrite
       `OP_R: 			controls <= #`simdelay 9'b0010_0000_0; // R-type
+      // I type A: regwrite / alusrc
       `OP_I_ARITH: 	controls <= #`simdelay 9'b0011_0000_0; // I-type Arithmetic
+      // I type Load: regwrite / alusrc / mem to reg
       `OP_I_LOAD: 	controls <= #`simdelay 9'b0011_1000_0; // I-type Load
+      // S type: alusrc / memwrite
       `OP_S: 			controls <= #`simdelay 9'b0001_0100_0; // S-type Store
+      // B type: branch
       `OP_B: 			controls <= #`simdelay 9'b0000_0010_0; // B-type Branch
+      // LUI: LUI, regwrite, alusrc
       `OP_U_LUI: 		controls <= #`simdelay 9'b0111_0000_0; // LUI
+      // JAL: regwrite, alusrc, jal
       `OP_J_JAL: 		controls <= #`simdelay 9'b0011_0001_0; // JAL
+      // Default: 0
       default:    	controls <= #`simdelay 9'b0000_0000_0; // ???
     endcase
   end
@@ -172,6 +200,15 @@ module aludec(input      [6:0] opcode,
 			 10'b0100000_000: alucontrol <= #`simdelay 5'b10000; // subtraction (sub)
 			 10'b0000000_111: alucontrol <= #`simdelay 5'b00001; // and (and)
 			 10'b0000000_110: alucontrol <= #`simdelay 5'b00010; // or (or)
+
+       //Another Instructions
+       10'b0000000_001: alucontrol <= #`simdelay 5'b00100; // SLL
+       10'b0000000_010: alucontrol <= #`simdelay 5'b10111; // SLT
+       10'b0000000_011: alucontrol <= #`simdelay 5'b11000; // SLTU
+       10'b0000000_100: alucontrol <= #`simdelay 5'b00011; // XOR
+       10'b0000000_101: alucontrol <= #`simdelay 5'b00101; // SRL
+       10'b0100000_101: alucontrol <= #`simdelay 5'b00110; // SRA
+
           default:         alucontrol <= #`simdelay 5'bxxxxx; // ???
         endcase
 		end
@@ -182,6 +219,12 @@ module aludec(input      [6:0] opcode,
 			 3'b000:  alucontrol <= #`simdelay 5'b00000; // addition (addi)
 			 3'b110:  alucontrol <= #`simdelay 5'b00010; // or (ori)
 			 3'b111:  alucontrol <= #`simdelay 5'b00001; // and (andi)
+
+       //Another Instructions
+       3'b010:  alucontrol <= #`simdelay 5'b00000;  // ADDI(add)
+       3'b011:  alucontrol <= #`simdelay 5'b10111;  // SLTI(sub) 
+       3'b011:  alucontrol <= #`simdelay 5'b11000;  // SLTIU(sub)
+       3'b100:  alucontrol <= #`simdelay 5'b00011;  // XORI(xor)
           default: alucontrol <= #`simdelay 5'bxxxxx; // ???
         endcase
 		end
