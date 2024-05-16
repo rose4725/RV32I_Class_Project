@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RV32I_System
-Tue May 14 18:46:27 2024
+Thu May 16 10:56:43 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -82,7 +82,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue May 14 18:46:27 2024      ;
+; Analysis & Synthesis Status        ; Successful - Thu May 16 10:56:43 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; RV32I_System                               ;
 ; Top-level Entity Name              ; RV32I_System                               ;
@@ -1642,7 +1642,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:08     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -1652,7 +1652,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Tue May 14 18:46:15 2024
+    Info: Processing started: Thu May 16 10:56:32 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RV32I_System -c RV32I_System
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file /jangm/rv32i_class_project/rv32i_class_project/rv32i_system/decoder/addr_decoder.v
@@ -1797,6 +1797,7 @@ Info (12133): Instantiated megafunction "ram2port_inst_data:iMem|altsyncram:alts
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_5ul2.tdf
     Info (12023): Found entity 1: altsyncram_5ul2
 Info (12128): Elaborating entity "altsyncram_5ul2" for hierarchy "ram2port_inst_data:iMem|altsyncram:altsyncram_component|altsyncram_5ul2:auto_generated"
+Critical Warning (127005): Memory depth (2048) in the design file differs from memory depth (5) in the Memory Initialization File "C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/insts_data.mif" -- setting initial value for remaining addresses to 0
 Info (12128): Elaborating entity "Addr_Decoder" for hierarchy "Addr_Decoder:iDecoder"
 Info (12128): Elaborating entity "TimerCounter" for hierarchy "TimerCounter:iTimer"
 Info (12128): Elaborating entity "GPIO" for hierarchy "GPIO:iGPIO"
@@ -1812,10 +1813,10 @@ Info (21057): Implemented 3386 device resources after synthesis - the final reso
     Info (21061): Implemented 3301 logic cells
     Info (21064): Implemented 32 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4707 megabytes
-    Info: Processing ended: Tue May 14 18:46:27 2024
-    Info: Elapsed time: 00:00:12
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4719 megabytes
+    Info: Processing ended: Thu May 16 10:56:43 2024
+    Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:08
 
 
