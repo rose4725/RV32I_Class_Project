@@ -1,5 +1,5 @@
 Fitter report for RV32I_System
-Thu May 16 10:56:56 2024
+Fri Jul 05 15:20:44 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -71,7 +71,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Fitter Summary                                                                  ;
 +------------------------------------+--------------------------------------------+
-; Fitter Status                      ; Successful - Thu May 16 10:56:56 2024      ;
+; Fitter Status                      ; Successful - Fri Jul 05 15:20:44 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; RV32I_System                               ;
 ; Top-level Entity Name              ; RV32I_System                               ;
@@ -154,16 +154,16 @@ applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 16          ;
-; Maximum allowed            ; 16          ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 12          ;
 ;                            ;             ;
-; Average used               ; 2.64        ;
-; Maximum used               ; 16          ;
+; Average used               ; 2.17        ;
+; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;  18.2%      ;
-;     Processors 5-16        ;   9.1%      ;
+;     Processors 2-4         ;  16.7%      ;
+;     Processors 5-12        ;   8.3%      ;
 +----------------------------+-------------+
 
 
@@ -659,7 +659,7 @@ applicable agreement for further details.
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/output_files/RV32I_System.pin.
+The pin-out file can be found in C:/Korea_Univ/rv32i_class_project/RV32I_System_Syn/output_files/RV32I_System.pin.
 
 
 +-------------------------------------------------------------------------+
@@ -2873,8 +2873,8 @@ RAM content values are presented in the following format: (Binary) (Octal) (Deci
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ;   Addr   ;              +0              ;              +1              ;              +2              ;              +3              ;              +4              ;              +5              ;              +6              ;              +7              ;
 +----------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+------------------------------+
-;0;(00000000010000000000000001101111) (20000157) (4194415) (40006F)    ;(11111111111111110010011110110111) (-154111) (-55369) (-13-8-4-9)   ;(00000000011000000000011100010011) (30003423) (6293267) (600713)   ;(00000000111001111010011000100011) (71723043) (15181347) (E7A623)   ;(00000000000000001000000001100111) (100147) (32871) (8067)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;
-;8;(00000000000000000000000000000000) (0) (0) (00)    ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;
+;0;(00000000010000000000000001101111) (20000157) (4194415) (40006F)    ;(11111111111111110010011110110111) (-154111) (-55369) (-13-8-4-9)   ;(00000101100000000000011100010011) (540003423) (92276499) (5800713)   ;(00000000111001111010011000100011) (71723043) (15181347) (E7A623)   ;(00000001000000000000011100010011) (100003423) (16779027) (1000713)   ;(00000000111001111010100000100011) (71724043) (15181859) (E7A823)   ;(00000100000000000000011100010011) (400003423) (67110675) (4000713)   ;(00000000111001111010101000100011) (71725043) (15182371) (E7AA23)   ;
+;8;(00000111100100000000011100010011) (744003423) (126879507) (7900713)    ;(00000000111001111010110000100011) (71726043) (15182883) (E7AC23)   ;(00011110000000000000011100010011) (-694963873) (503318291) (1E000713)   ;(00000000111001111010010000100011) (71722043) (15180835) (E7A423)   ;(00000000000000001000000001100111) (100147) (32871) (8067)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;
 ;16;(00000000000000000000000000000000) (0) (0) (00)    ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;
 ;24;(00000000000000000000000000000000) (0) (0) (00)    ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;
 ;32;(00000000000000000000000000000000) (0) (0) (00)    ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;(00000000000000000000000000000000) (0) (0) (00)   ;
@@ -3464,7 +3464,7 @@ RAM content values are presented in the following format: (Binary) (Octal) (Deci
 +-----------------+
 ; Fitter Messages ;
 +-----------------+
-Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (119006): Selected device EP3C16F484C6 for design "RV32I_System"
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
@@ -3716,7 +3716,7 @@ Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 0.70 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.63 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -3738,17 +3738,17 @@ Warning (169177): 14 pins must meet Altera requirements for 3.3-, 3.0-, and 2.5-
     Info (169178): Pin SW[9] uses I/O standard 3.3-V LVTTL at D2
     Info (169178): Pin SW[8] uses I/O standard 3.3-V LVTTL at E4
     Info (169178): Pin SW[7] uses I/O standard 3.3-V LVTTL at E3
-Info (144001): Generated suppressed messages file C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/output_files/RV32I_System.fit.smsg
+Info (144001): Generated suppressed messages file C:/Korea_Univ/rv32i_class_project/RV32I_System_Syn/output_files/RV32I_System.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 206 warnings
-    Info: Peak virtual memory: 6175 megabytes
-    Info: Processing ended: Thu May 16 10:56:57 2024
+    Info: Peak virtual memory: 5900 megabytes
+    Info: Processing ended: Fri Jul 05 15:20:45 2024
     Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:08
+    Info: Total CPU time (on all processors): 00:00:10
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/output_files/RV32I_System.fit.smsg.
+The suppressed messages can be found in C:/Korea_Univ/rv32i_class_project/RV32I_System_Syn/output_files/RV32I_System.fit.smsg.
 
 

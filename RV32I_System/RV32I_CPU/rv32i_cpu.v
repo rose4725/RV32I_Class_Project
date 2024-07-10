@@ -345,6 +345,7 @@ module datapath(input         clk, reset,
     .rs2_data	(rs2_data));
 
 
+
 	assign MemWdata = rs2_data;
 
 
