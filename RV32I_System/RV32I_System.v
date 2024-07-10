@@ -57,7 +57,7 @@ module RV32I_System(
   wire clk180;
   wire data_re;
   
-  // reset =  BUTTON[0]
+  // reset =  BUTTON[0]  
   // if BUTTON[0] is pressed, the reset goes down to "0"
   // reset is a low-active signal
   assign  reset_poweron = BUTTON[0];

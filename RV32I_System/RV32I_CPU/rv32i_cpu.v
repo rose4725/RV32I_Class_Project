@@ -201,6 +201,7 @@ module aludec(input      [6:0] opcode,
 			 10'b0000000_111: alucontrol <= #`simdelay 5'b00001; // and (and)
 			 10'b0000000_110: alucontrol <= #`simdelay 5'b00010; // or (or)
 
+       //////Lab #3
        //Another Instructions
        10'b0000000_001: alucontrol <= #`simdelay 5'b00100; // SLL
        10'b0000000_010: alucontrol <= #`simdelay 5'b10111; // SLT
@@ -220,6 +221,7 @@ module aludec(input      [6:0] opcode,
 			 3'b110:  alucontrol <= #`simdelay 5'b00010; // or (ori)
 			 3'b111:  alucontrol <= #`simdelay 5'b00001; // and (andi)
 
+       //////Lab #3
        //Another Instructions
        3'b010:  alucontrol <= #`simdelay 5'b00000;  // ADDI(add)
        3'b011:  alucontrol <= #`simdelay 5'b10111;  // SLTI(sub) 
@@ -240,6 +242,8 @@ module aludec(input      [6:0] opcode,
 
       `OP_U_LUI: 		// U-type (LUI)
       	alucontrol <= #`simdelay 5'b00000;  // addition
+      `OP_U_AUIPC:  // U-type (AUIPC)
+        alucontrol <= #`simdelay 5'b00000;  // addition
 
       default: 
       	alucontrol <= #`simdelay 5'b00000;  // 
@@ -270,24 +274,31 @@ module datapath(input         clk, reset,
                 output [31:0] MemWdata,
                 input  [31:0] MemRdata);
 
-  wire [4:0]  rs1, rs2, rd;
+  wire [4:0]  rs1, rs2, rd;               // 5bit rs1, rs2, rd 
   wire [2:0]  funct3;
-  wire [31:0] rs1_data, rs2_data;
-  reg  [31:0] rd_data;
-  wire [20:1] jal_imm;
-  wire [31:0] se_jal_imm;
-  wire [12:1] br_imm;
-  wire [31:0] se_br_imm;
-  wire [31:0] se_imm_itype;
-  wire [31:0] se_imm_stype;
-  wire [31:0] auipc_lui_imm;
-  reg  [31:0] alusrc1;
-  reg  [31:0] alusrc2;
-  wire [31:0] branch_dest, jal_dest;
-  wire		  Nflag, Zflag, Cflag, Vflag;
+  wire [31:0] rs1_data, rs2_data;         // 32 bit source data
+  reg  [31:0] rd_data;                    // 32 bit destination data
+  wire [20:1] jal_imm;                    // 20 bit imm for jal 
+  wire [31:0] se_jal_imm;                 // 32 bit imm for jal
+  wire [12:1] br_imm;                     // 12 bit branch imm
+  wire [31:0] se_br_imm;                  // 32 bit branch imm
+  wire [31:0] se_imm_itype;               // 32 bit imm i-type
+  wire [31:0] se_imm_stype;               // 32 bit imm s-type
+  wire [31:0] auipc_lui_imm;              // 32 bit imm auipc/lui
+  reg  [31:0] alusrc1;                    // 32 bit alu source 1
+  reg  [31:0] alusrc2;                    // 32 bit alu source 2
+  wire [31:0] branch_dest, jal_dest;      // 32 bit destination for branch and jal 
+  wire		  Nflag, Zflag, Cflag, Vflag; 
   wire		  f3beq, f3blt;
-  wire		  beq_taken;
-  wire		  blt_taken;
+  wire		  beq_taken;                    // beq(branch if equal)
+  wire		  blt_taken;                    // blt(branch if less than)
+
+  //////Lab #3
+  //Add another branch instructions: bne(001), bge(101), bltu(110), bgeu(111)
+  wire      f3bne, f3bge, f3bltu, f3bgeu;
+  wire      bne_taken, bge_taken, bltu_taken, bgeu_taken;
+
+  wire      b_taken;
 
   assign rs1 = inst[19:15];
   assign rs2 = inst[24:20];
@@ -297,11 +308,38 @@ module datapath(input         clk, reset,
   //
   // PC (Program Counter) logic 
   //
+
+  // if funct3 is 000, beq instruction
   assign f3beq  = (funct3 == 3'b000);
+  // if funct3 is 100, blt instruction
   assign f3blt  = (funct3 == 3'b100);
 
   assign beq_taken  =  branch & f3beq & Zflag;
   assign blt_taken  =  branch & f3blt & (Nflag != Vflag);
+
+  //////Lab #3
+  //BNE case
+  assign f3bne = (funct3 == 3'b001);
+  //If ALU output(sub) is not zero = not same
+  assign bne_taken = branch & f3bne & ~Zflag;
+
+  //BGE case
+  assign f3bge = (funct3 == 3'101);
+  //If ALU output is negative and overflow
+  assign bge_taken = branch & f3bge & (Nflag == Vflag)
+
+  //BLTU case
+  assign f3bltu = (funct3 == 3'110);
+  //If ALU output makes carry
+  assign bltu_taken = branch & f3bltu & Cflag;
+
+  //BGEU case
+  assign f3bgeu = (funct3 == 3'111);
+  //If ALU output not makes carry
+  assign bgeu_taken = branch & f3bgeu & ~Cflag;
+
+  //If any branches taken
+  assign b_taken = beq_taken | bne_taken | blt_taken | bge_taken | bltu_taken | bgeu_taken;
 
   assign branch_dest = (pc + se_br_imm);
   assign jal_dest 	= (pc + se_jal_imm);
@@ -311,7 +349,7 @@ module datapath(input         clk, reset,
      if (reset)  pc <= 32'b0;
 	  else 
 	  begin
-	      if (beq_taken | blt_taken) // branch_taken
+	      if (b_taken) // branch_taken
 				pc <= #`simdelay branch_dest;
 		   else if (jal) // jal
 				pc <= #`simdelay jal_dest;
@@ -330,7 +368,6 @@ module datapath(input         clk, reset,
   assign se_br_imm[31:0] = {{19{br_imm[12]}},br_imm[12:1],1'b0};
 
 
-
   // 
   // Register File 
   //
@@ -343,7 +380,6 @@ module datapath(input         clk, reset,
     .rd_data	(rd_data),
     .rs1_data	(rs1_data),
     .rs2_data	(rs2_data));
-
 
 
 	assign MemWdata = rs2_data;
