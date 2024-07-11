@@ -226,9 +226,14 @@ module alu(input      [31:0] a, b,
   always@(*)
     case(alucont[3:0])
       4'b0000: result <= #`simdelay sum;    // A + B, A - B
-      4'b0001: result <= #`simdelay a & b;
-      4'b0010: result <= #`simdelay a | b;
-      4'b1000: result <= #`simdelay {31'b0,sltu};
+      4'b0001: result <= #`simdelay a & b;	//AND
+      4'b0010: result <= #`simdelay a | b;	//OR
+	  4'b0011: result <= #`simdelay a ^ b;	//XOR
+	  4'b0100: result <= #`simdelay a << b;	//SLL 
+	  4'b0101: result <= #`simdelay a >> b;	//SRL
+	  4'b0110: result <= #`simdelay $signed(a) >>> b;	//SRA
+	  4'b0111: result <= #`simdelay {31'b0,slt};	//SLT
+      4'b1000: result <= #`simdelay {31'b0,sltu};	//SLTU
       default: result <= #`simdelay 32'b0;
     endcase
 

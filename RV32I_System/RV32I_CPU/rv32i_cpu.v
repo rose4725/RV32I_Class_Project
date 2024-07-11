@@ -120,14 +120,15 @@ endmodule
 //
 // RV32I Opcode map = Inst[6:0]
 //
-`define OP_R			7'b0110011
+`define OP_R			  7'b0110011
 `define OP_I_ARITH	7'b0010011
 `define OP_I_LOAD  	7'b0000011
 `define OP_I_JALR  	7'b1100111
-`define OP_S			7'b0100011
-`define OP_B			7'b1100011
+`define OP_S			  7'b0100011
+`define OP_B			  7'b1100011
 `define OP_U_LUI		7'b0110111
 `define OP_J_JAL		7'b1101111
+`define OP_U_AUIPC  7'b0010111
 
 //
 // Main decoder generates all control signals except alucontrol 
@@ -216,15 +217,14 @@ module aludec(input      [6:0] opcode,
 
       `OP_I_ARITH:   // I-type Arithmetic
 		begin
-			case(funct3)
+			case({funct3})
 			 3'b000:  alucontrol <= #`simdelay 5'b00000; // addition (addi)
 			 3'b110:  alucontrol <= #`simdelay 5'b00010; // or (ori)
 			 3'b111:  alucontrol <= #`simdelay 5'b00001; // and (andi)
 
        //////Lab #3
        //Another Instructions
-       3'b010:  alucontrol <= #`simdelay 5'b00000;  // ADDI(add)
-       3'b011:  alucontrol <= #`simdelay 5'b10111;  // SLTI(sub) 
+       3'b010:  alucontrol <= #`simdelay 5'b10111;  // SLTI(sub) 
        3'b011:  alucontrol <= #`simdelay 5'b11000;  // SLTIU(sub)
        3'b100:  alucontrol <= #`simdelay 5'b00011;  // XORI(xor)
           default: alucontrol <= #`simdelay 5'bxxxxx; // ???
@@ -321,39 +321,41 @@ module datapath(input         clk, reset,
   //BNE case
   assign f3bne = (funct3 == 3'b001);
   //If ALU output(sub) is not zero = not same
-  assign bne_taken = branch & f3bne & ~Zflag;
+  assign bne_taken = branch & f3bne & (~Zflag);
 
   //BGE case
-  assign f3bge = (funct3 == 3'101);
+  assign f3bge = (funct3 == 3'b101);
   //If ALU output is negative and overflow
-  assign bge_taken = branch & f3bge & (Nflag == Vflag)
+  assign bge_taken = branch & f3bge & (Nflag == Vflag);
 
   //BLTU case
-  assign f3bltu = (funct3 == 3'110);
+  assign f3bltu = (funct3 == 3'b110);
   //If ALU output makes carry
   assign bltu_taken = branch & f3bltu & Cflag;
 
   //BGEU case
-  assign f3bgeu = (funct3 == 3'111);
+  assign f3bgeu = (funct3 == 3'b111);
   //If ALU output not makes carry
   assign bgeu_taken = branch & f3bgeu & ~Cflag;
 
   //If any branches taken
   assign b_taken = beq_taken | bne_taken | blt_taken | bge_taken | bltu_taken | bgeu_taken;
 
+  //Assign branch destination
   assign branch_dest = (pc + se_br_imm);
   assign jal_dest 	= (pc + se_jal_imm);
 
+  //Select PC 
   always @(posedge clk, posedge reset)
   begin
      if (reset)  pc <= 32'b0;
 	  else 
 	  begin
-	      if (b_taken) // branch_taken
+	      if (b_taken) // If branch_taken, PC is branch destination
 				pc <= #`simdelay branch_dest;
-		   else if (jal) // jal
+		   else if (jal) // If jal, PC is jal destination
 				pc <= #`simdelay jal_dest;
-		   else 
+		   else           // else just pc + 4
 				pc <= #`simdelay (pc + 4);
 	  end
   end

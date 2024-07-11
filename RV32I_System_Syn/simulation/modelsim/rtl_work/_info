@@ -1,0 +1,371 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\JangM\RV32I_Class_Project\RV32I_Class_Project\RV32I_System_Syn\simulation\modelsim
+vadder_1bit
+!i10b 1
+!s100 9^K6oZe8?DDW0h8MFTiig3
+IDz_1@VKZBn8Q?@9jng7bY2
+V]J[nU[1hnP5TbJMP^fIol0
+Z1 dC:\JangM\RV32I_Class_Project\RV32I_Class_Project\RV32I_System_Syn\simulation\modelsim
+Z2 w1720673743
+Z3 8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/basic_modules.v
+Z4 FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/basic_modules.v
+L0 292
+Z5 OV;L;10.1d;51
+r1
+!s85 0
+31
+Z6 !s108 1720674156.024000
+Z7 !s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/basic_modules.v|
+Z8 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/basic_modules.v|
+!s101 -O0
+Z9 o-vlog01compat -work work -O0
+Z10 !s92 -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU -O0
+vadder_32bit
+!i10b 1
+!s100 4hA0eYVk0jmS80gbCfLN>3
+IUfe::QkKlnRRTQMCKH5A31
+V2a8W<eIGCaS>^Wh314@KB0
+R1
+R2
+R3
+R4
+L0 244
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!s101 -O0
+R9
+R10
+vAddr_Decoder
+IjiPcV?2_1[P?7X?1VM2]a3
+VYZUiY@2bCD3RmSiD^JG2z0
+R1
+w1594693851
+8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Decoder/Addr_Decoder.v
+FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Decoder/Addr_Decoder.v
+L0 11
+R5
+r1
+31
+R9
+n@addr_@decoder
+!i10b 1
+!s100 ACP4PV=m8ASIn^Bzd;Emj0
+!s85 0
+!s108 1720674155.473000
+!s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Decoder/Addr_Decoder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Decoder|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Decoder/Addr_Decoder.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Decoder -O0
+vALTPLL_clkgen
+IAW6gjHJQba_TgCL3m[jMM0
+VaU<6ME4_agc_khQ?L:nl:2
+R1
+w1594704395
+8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_PLL/ALTPLL_clkgen.v
+FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_PLL/ALTPLL_clkgen.v
+L0 39
+R5
+r1
+31
+R9
+n@a@l@t@p@l@l_clkgen
+!i10b 1
+!s100 l;fB9`W?X<8aYOLhmEU<l0
+!s85 0
+!s108 1720674155.593000
+!s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_PLL/ALTPLL_clkgen.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_PLL|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_PLL/ALTPLL_clkgen.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_PLL -O0
+vALTPLL_clkgen_altpll
+IJnUfi@>6oeo5A1EZ`f`ma1
+V@cYEllCA3Bo2<VA=PgzJo2
+R1
+w1594635035
+8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/db/altpll_clkgen_altpll.v
+FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/db/altpll_clkgen_altpll.v
+L0 29
+R5
+r1
+31
+R9
+n@a@l@t@p@l@l_clkgen_altpll
+!i10b 1
+!s100 ;Wg5S^O;?>a8^hcGJ:;jB0
+!s85 0
+!s108 1720674155.958000
+!s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/db/altpll_clkgen_altpll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/db|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/db/altpll_clkgen_altpll.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/db -O0
+valu
+!i10b 1
+!s100 Dk>MRY:XWDEJmMzG=OJgT3
+IWUUe6bIW]kgIDZ>BHCQ]_2
+VY[dlW?oC0]`SXN0VNaf780
+R1
+R2
+R3
+R4
+Z11 L0 198
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!s101 -O0
+R9
+R10
+valudec
+IiOWZ0c[X9KW[B`_8_lFI?2
+V<MTfeadkAUVW_zEX58RE50
+R1
+Z12 w1720673955
+Z13 8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/rv32i_cpu.v
+Z14 FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/rv32i_cpu.v
+L0 188
+R5
+r1
+31
+Z15 !s108 1720674155.790000
+Z16 !s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/rv32i_cpu.v|
+Z17 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/rv32i_cpu.v|
+R9
+R10
+!i10b 1
+!s100 hb3l==zze9`d<M881HR0:1
+!s85 0
+!s101 -O0
+vcontroller
+I[;COc:0O5:D5jM`0PhIoI1
+VS[Z^RUOl;1ZUalDPQln5<1
+R1
+R12
+R13
+R14
+L0 84
+R5
+r1
+31
+R15
+R16
+R17
+R9
+R10
+!i10b 1
+!s100 VFbCKNAMVNfMhzH2ZL3I43
+!s85 0
+!s101 -O0
+vdatapath
+I0K>@ldF>HOg15[TZi6[>C0
+Vd@o[h6a;dQo647WF;Cg7I1
+R1
+R12
+R13
+R14
+L0 259
+R5
+r1
+31
+R15
+R16
+R17
+R9
+R10
+!i10b 1
+!s100 =;hMLQdYhP;f[D67YkF2h1
+!s85 0
+!s101 -O0
+vGPIO
+I1E@oSNOlCjAXBiYX??[:z0
+VAT1XQY_W6_M^VLzzD2Q3_3
+R1
+Z18 w1715846277
+Z19 8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/GPIO/GPIO.v
+Z20 FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/GPIO/GPIO.v
+L0 30
+R5
+r1
+31
+Z21 !s108 1720674155.721000
+Z22 !s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/GPIO/GPIO.v|
+Z23 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/GPIO|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/GPIO/GPIO.v|
+R9
+Z24 !s92 -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/GPIO -O0
+n@g@p@i@o
+!i10b 1
+!s100 Nm7DZa@GIKBS_zk^U:J0M3
+!s85 0
+!s101 -O0
+vmaindec
+I6F35M<b;9oZG@SXLFQPhh3
+VdhXzYGC][edb4:W<;1c:53
+R1
+R12
+R13
+R14
+L0 137
+R5
+r1
+31
+R15
+R16
+R17
+R9
+R10
+!i10b 1
+!s100 mUDUNSm09V:IVQ4^GW]GY0
+!s85 0
+!s101 -O0
+vmux2
+!i10b 1
+!s100 ?AjS3SIYngf23[[SM0DoM0
+I;_Xfm=d41ziJDGZkgiV4f3
+VT8RWJBjAIeM]>7U=5kBkT1
+R1
+R2
+R3
+R4
+L0 302
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!s101 -O0
+R9
+R10
+vpulse_gen
+I;eIRWP1BJNiQW9[?QP`;82
+Vzj7fbHTOAPGHl]4LN::<01
+R1
+R18
+R19
+R20
+R11
+R5
+r1
+31
+R21
+R22
+R23
+R9
+R24
+!i10b 1
+!s100 oWm>[ISj]D5ejZO5k01GT1
+!s85 0
+!s101 -O0
+vram2port_inst_data
+IK90loBBgiH:9i3jSVbi8<0
+V@nS`@J9bDPP4cX22C`O`Z2
+R1
+w1594704435
+8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_Mem_Dual_Port/ram2port_inst_data.v
+FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_Mem_Dual_Port/ram2port_inst_data.v
+L0 39
+R5
+r1
+31
+R9
+!i10b 1
+!s100 bcLLVQ`@7@VmhmA0Ff_cM1
+!s85 0
+!s108 1720674155.530000
+!s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_Mem_Dual_Port/ram2port_inst_data.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_Mem_Dual_Port|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_Mem_Dual_Port/ram2port_inst_data.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_Mem_Dual_Port -O0
+vregfile
+!i10b 1
+!s100 I13j@jed7HFHf?0dWFh@Z1
+INcQeK44IFn^8oIYnDkINS1
+V0;kcV]GA@hGafL0jTQ04a3
+R1
+R2
+R3
+R4
+L0 15
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!s101 -O0
+R9
+R10
+vrv32i_cpu
+Iin[ak7DVYGViEVcYP8BQX1
+VC;H2n;KC1aZSnAiUDXcPL0
+R1
+R12
+R13
+R14
+L0 20
+R5
+r1
+31
+R15
+R16
+R17
+R9
+R10
+!i10b 1
+!s100 0Q?FO9FbAE9bSE`3]SIm_3
+!s85 0
+!s101 -O0
+vRV32I_System
+ILNODU>Z2WSS0DEN9a7D8L2
+V[^DSFKj=j]FV6fohJOiTf3
+R1
+w1720672939
+8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_System.v
+FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_System.v
+L0 27
+R5
+r1
+31
+R9
+n@r@v32@i_@system
+!i10b 1
+!s100 o;_<_VP1;8c>lTdjNfWc@3
+!s85 0
+!s108 1720674155.663000
+!s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_System.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_System.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System -O0
+vTimerCounter
+IMoCSkS_>U;Th`lCQLgRRJ2
+V?6SiADLzC[nVUWOhUg7E;3
+R1
+w1594694452
+8C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Timer/TimerCounter.v
+FC:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Timer/TimerCounter.v
+L0 11
+R5
+r1
+31
+R9
+n@timer@counter
+!i10b 1
+!s100 k340W^gBm^J3g8ZoLG`YP3
+!s85 0
+!s108 1720674155.895000
+!s107 C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Timer/TimerCounter.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Timer|C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Timer/TimerCounter.v|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Timer -O0

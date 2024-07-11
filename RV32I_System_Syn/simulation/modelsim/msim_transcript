@@ -1,0 +1,122 @@
+# Reading C:/altera/13.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do RV32I_System_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Decoder {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Decoder/Addr_Decoder.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module Addr_Decoder
+# 
+# Top level modules:
+# 	Addr_Decoder
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_Mem_Dual_Port {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_Mem_Dual_Port/ram2port_inst_data.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ram2port_inst_data
+# 
+# Top level modules:
+# 	ram2port_inst_data
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_PLL {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Altera_PLL/ALTPLL_clkgen.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ALTPLL_clkgen
+# 
+# Top level modules:
+# 	ALTPLL_clkgen
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_System.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module RV32I_System
+# 
+# Top level modules:
+# 	RV32I_System
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/GPIO {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/GPIO/GPIO.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module GPIO
+# -- Compiling module pulse_gen
+# 
+# Top level modules:
+# 	GPIO
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/rv32i_cpu.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module rv32i_cpu
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# 
+# Top level modules:
+# 	rv32i_cpu
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Timer {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/Timer/TimerCounter.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module TimerCounter
+# 
+# Top level modules:
+# 	TimerCounter
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/db {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Syn/db/altpll_clkgen_altpll.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ALTPLL_clkgen_altpll
+# 
+# Top level modules:
+# 	ALTPLL_clkgen_altpll
+# vlog -vlog01compat -work work +incdir+C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU {C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System/RV32I_CPU/basic_modules.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module regfile
+# -- Compiling module alu
+# -- Compiling module adder_32bit
+# -- Compiling module adder_1bit
+# -- Compiling module mux2
+# 
+# Top level modules:
+# 	regfile
+# 	alu
+# 	mux2
+# 
+cd C:/JangM/RV32I_Class_Project/RV32I_Class_Project/RV32I_System_Sim
+# reading C:\altera\13.1\modelsim_ase\win32aloem/../modelsim.ini
+vsim work.RV32I_System_tb
+# vsim work.RV32I_System_tb 
+# Loading work.RV32I_System_tb
+# Loading work.RV32I_System
+# Loading work.ALTPLL_clkgen
+# Loading work.altpll
+# Loading work.ALTERA_DEVICE_FAMILIES
+# Loading work.pll_iobuf
+# Loading work.rv32i_cpu
+# Loading work.controller
+# Loading work.maindec
+# Loading work.aludec
+# Loading work.datapath
+# Loading work.regfile
+# Loading work.alu
+# Loading work.adder_32bit
+# Loading work.adder_1bit
+# Loading work.ram2port_inst_data
+# Loading work.altsyncram
+# Loading work.ALTERA_MF_MEMORY_INITIALIZATION
+# Loading work.Addr_Decoder
+# Loading work.TimerCounter
+# Loading work.GPIO
+# Loading work.pulse_gen
+# Loading work.MF_cycloneiii_pll
+# Loading work.cda_m_cntr
+# Loading work.cda_n_cntr
+# Loading work.cda_scale_cntr
+add wave -position insertpoint  \
+sim:/RV32I_System_tb/hex0
+add wave -position insertpoint  \
+sim:/RV32I_System_tb/ledg
+add wave -position insertpoint  \
+sim:/RV32I_System_tb/iRV32I_System/icpu/i_controller/i_maindec/branch
+add wave -position insertpoint  \
+sim:/RV32I_System_tb/iRV32I_System/icpu/i_datapath/i_alu/result
+
+run 10000ns
+# Warning: read_during_write_mode_mixed_ports is assumed as               OLD_DATA
+# Time: 0  Instance: RV32I_System_tb.iRV32I_System.iMem.altsyncram_component
+#  Note : Cyclone III PLL locked to incoming clock
+# Time: 90000  Instance: RV32I_System_tb.iRV32I_System.pll0.altpll_component.cycloneiii_pll.pll3

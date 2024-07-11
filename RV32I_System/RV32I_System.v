@@ -41,7 +41,7 @@ module RV32I_System(
   wire locked;
   wire [31:0] fetch_addr;
   wire [31:0] inst;
-  wire [31:0] data_addr;
+  wire [31:0] data_addr; 
   wire [31:0] write_data;
   wire [31:0] read_data_timer;
   wire [31:0] read_data_uart;

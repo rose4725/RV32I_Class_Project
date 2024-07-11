@@ -1,5 +1,5 @@
 Flow report for RV32I_System
-Fri Jul 05 15:20:56 2024
+Thu Jul 11 14:00:13 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,15 +40,15 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Fri Jul 05 15:20:56 2024      ;
+; Flow Status                        ; Successful - Thu Jul 11 14:00:13 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; RV32I_System                               ;
 ; Top-level Entity Name              ; RV32I_System                               ;
 ; Family                             ; Cyclone III                                ;
 ; Device                             ; EP3C16F484C6                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 2,314 / 15,408 ( 15 % )                    ;
-;     Total combinational functions  ; 2,261 / 15,408 ( 15 % )                    ;
+; Total logic elements               ; 3,144 / 15,408 ( 20 % )                    ;
+;     Total combinational functions  ; 2,790 / 15,408 ( 18 % )                    ;
 ;     Dedicated logic registers      ; 1,319 / 15,408 ( 9 % )                     ;
 ; Total registers                    ; 1319                                       ;
 ; Total pins                         ; 52 / 347 ( 15 % )                          ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/05/2024 15:20:20 ;
+; Start date & time ; 07/11/2024 13:59:24 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RV32I_System        ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 5334168311814.172016042007412         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 185410939374676.172067396414292       ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                    ; --            ; --          ; --             ;
@@ -94,12 +94,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:11     ; 1.0                     ; 4703 MB             ; 00:00:09                           ;
-; Fitter                    ; 00:00:12     ; 2.2                     ; 5900 MB             ; 00:00:10                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 4605 MB             ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 4816 MB             ; 00:00:03                           ;
-; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 4585 MB             ; 00:00:03                           ;
-; Total                     ; 00:00:31     ; --                      ; --                  ; 00:00:26                           ;
+; Analysis & Synthesis      ; 00:00:17     ; 1.0                     ; 4706 MB             ; 00:00:16                           ;
+; Fitter                    ; 00:00:18     ; 3.3                     ; 6160 MB             ; 00:00:11                           ;
+; Assembler                 ; 00:00:01     ; 1.0                     ; 4606 MB             ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 4870 MB             ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 4590 MB             ; 00:00:02                           ;
+; Total                     ; 00:00:43     ; --                      ; --                  ; 00:00:32                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -108,11 +108,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; DESKTOP-06IPGIG  ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; DESKTOP-06IPGIG  ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; DESKTOP-06IPGIG  ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; DESKTOP-06IPGIG  ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; DESKTOP-06IPGIG  ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; Jangmin          ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; Jangmin          ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; Jangmin          ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; Jangmin          ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; Jangmin          ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 
