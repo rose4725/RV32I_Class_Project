@@ -252,7 +252,7 @@ module aludec(input      [6:0] opcode,
         alucontrol <= #`simdelay 5'b00000;  // addition
 
       default: 
-      	alucontrol <= #`simdelay 5'b00000;  // 
+      	alucontrol <= #`simdelay 5'bxxxxx;  // 
 
     endcase
     
@@ -293,8 +293,7 @@ module datapath(input         clk, reset,
   wire [31:0] auipc_lui_imm;              // 32 bit imm auipc/lui
   reg  [31:0] alusrc1;                    // 32 bit alu source 1
   reg  [31:0] alusrc2;                    // 32 bit alu source 2
-  wire [31:0] branch_dest;
-  wire [31:0] jal_dest;      // 32 bit destination for branch and jal 
+  wire [31:0] branch_dest, jal_dest;      // 32 bit destination for branch and jal 
   wire		  Nflag, Zflag, Cflag, Vflag; 
   wire		  f3beq, f3blt;
   wire		  beq_taken;                    // beq(branch if equal)
@@ -304,7 +303,10 @@ module datapath(input         clk, reset,
   //Add another branch instructions: bne(001), bge(101), bltu(110), bgeu(111)
   wire      f3bne, f3bge, f3bltu, f3bgeu;
   wire      bne_taken, bge_taken, bltu_taken, bgeu_taken;
+
   wire      b_taken;
+
+  //Add another 
 
   assign rs1 = inst[19:15];
   assign rs2 = inst[24:20];
@@ -319,40 +321,43 @@ module datapath(input         clk, reset,
   assign f3beq  = (funct3 == 3'b000);
   // if funct3 is 100, blt instruction
   assign f3blt  = (funct3 == 3'b100);
+
+  assign beq_taken  =  branch & f3beq & Zflag;
+  assign blt_taken  =  branch & f3blt & (Nflag != Vflag);
+
+  //////Lab #3
   //BNE case
   assign f3bne = (funct3 == 3'b001);
-  //BGE case
-  assign f3bge = (funct3 == 3'b101);
-  //BLTU case
-  assign f3bltu = (funct3 == 3'b110);
-  //BGEU case
-  assign f3bgeu = (funct3 == 3'b111);
-
-  assign beq_taken  = branch & f3beq & Zflag;
-  assign blt_taken  = branch & f3blt & (Nflag != Vflag);
   //If ALU output(sub) is not zero = not same
   assign bne_taken = branch & f3bne & (~Zflag);
+
+  //BGE case
+  assign f3bge = (funct3 == 3'b101);
   //If ALU output is negative and overflow
   assign bge_taken = branch & f3bge & (Nflag == Vflag);
+
+  //BLTU case
+  assign f3bltu = (funct3 == 3'b110);
   //If ALU output makes carry
   assign bltu_taken = branch & f3bltu & Cflag;
+
+  //BGEU case
+  assign f3bgeu = (funct3 == 3'b111);
   //If ALU output not makes carry
-  assign bgeu_taken = branch & f3bgeu & (~Cflag);
+  assign bgeu_taken = branch & f3bgeu & ~Cflag;
+
   //If any branches taken
   assign b_taken = beq_taken | bne_taken | blt_taken | bge_taken | bltu_taken | bgeu_taken;
 
   //Assign branch destination
-  assign branch_dest = se_br_imm[31:0];
+  assign branch_dest = aluout;
   assign jal_dest 	= aluout;
 
   //Select PC 
   always @(posedge clk, posedge reset)
   begin
-     if (reset) begin
-      pc <= 32'b0;
-     end
+     if (reset)  pc <= 32'b0;
 	  else 
-
 	  begin
 	      if (b_taken) // If branch_taken, PC is branch destination
 				pc <= #`simdelay branch_dest;
@@ -363,6 +368,7 @@ module datapath(input         clk, reset,
 	  end
   end
 
+
   // JAL immediate
   assign jal_imm[20:1] = {inst[31],inst[19:12],inst[20],inst[30:21]};
   assign se_jal_imm[31:0] = {{11{jal_imm[20]}},jal_imm[20:1],1'b0};
@@ -370,6 +376,7 @@ module datapath(input         clk, reset,
   // Branch immediate
   assign br_imm[12:1] = {inst[31],inst[7],inst[30:25],inst[11:8]};
   assign se_br_imm[31:0] = {{19{br_imm[12]}},br_imm[12:1],1'b0};
+
 
   // 
   // Register File 
@@ -384,7 +391,9 @@ module datapath(input         clk, reset,
     .rs1_data	(rs1_data),
     .rs2_data	(rs2_data));
 
+
 	assign MemWdata = rs2_data;
+
 
 	//
 	// ALU 
@@ -402,8 +411,8 @@ module datapath(input         clk, reset,
 	// 1st source to ALU (alusrc1)
 	always@(*)
 	begin
-		if      (auipc | jal)	alusrc1[31:0]  =  pc;
-		else if (lui) 		alusrc1[31:0]  =  32'b0;
+		if      (auipc | jal | branch)	alusrc1[31:0]  =  pc;
+		else if (lui) 		alusrc1[31:0]  =  32'b0;0
 		else          		alusrc1[31:0]  =  rs1_data[31:0];
 	end
 	
@@ -413,13 +422,15 @@ module datapath(input         clk, reset,
 		if	     (auipc | lui)			alusrc2[31:0] = auipc_lui_imm[31:0];
 		else if (alusrc & memwrite)	alusrc2[31:0] = se_imm_stype[31:0];
 		else if (alusrc)					alusrc2[31:0] = se_imm_itype[31:0];
-    else if (jal & alusrc)    alusrc2[31:0] = se_jal_imm[31:0];
+    else if (jal)             alusrc2[31:0] = se_jal_imm[31:0];
+    else if (branch)          alusrc2[31:0] = se_br_imm[31:0];
 		else									alusrc2[31:0] = rs2_data[31:0];
 	end
 	
 	assign se_imm_itype[31:0] = {{20{inst[31]}},inst[31:20]};
 	assign se_imm_stype[31:0] = {{20{inst[31]}},inst[31:25],inst[11:7]};
 	assign auipc_lui_imm[31:0] = {inst[31:12],12'b0};
+
 
 	// Data selection for writing to RF
 	always@(*)

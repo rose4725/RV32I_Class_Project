@@ -17,7 +17,7 @@
 //          3
 //
 //  BUTTON : Push --> "0" 
-//        	 Release --> "1"
+//        	 Release --> "1" 
 //
 //  SW: Down (towards the edge of the board)  --> "0"
 //      Up --> "1"
