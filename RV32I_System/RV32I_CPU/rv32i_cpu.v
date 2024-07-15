@@ -129,6 +129,7 @@ endmodule
 `define OP_U_LUI		7'b0110111
 `define OP_J_JAL		7'b1101111
 `define OP_U_AUIPC  7'b0010111
+`define OP_J_JALR   7'b1100111
 
 //
 // Main decoder generates all control signals except alucontrol 
@@ -175,6 +176,8 @@ module maindec(input  [6:0] opcode,
       `OP_U_LUI: 		controls <= #`simdelay 9'b0111_0000_0; // LUI
       // JAL: regwrite, alusrc, jal
       `OP_J_JAL: 		controls <= #`simdelay 9'b0011_0001_0; // JAL
+      // JALR: regwrite, alusrc, jalr
+      `OP_J_JALR:   controls <= #`simdelay 9'b0011_0000_1;  //JALR
       // AUIPC: auipc, regwrite, alusrc
       `OP_U_AUIPC:  controls <= #`simdelay 9'b1011_0000_0;  //AUIPC      
       // Default: 0
@@ -251,6 +254,9 @@ module aludec(input      [6:0] opcode,
       `OP_J_JAL:
         alucontrol <= #`simdelay 5'b00000;  // addition
 
+      `OP_J_JALR:
+        alucontrol <=#`simdelay 5'b00000;
+
       default: 
       	alucontrol <= #`simdelay 5'b00000;  // 
 
@@ -305,6 +311,8 @@ module datapath(input         clk, reset,
   wire      f3bne, f3bge, f3bltu, f3bgeu;
   wire      bne_taken, bge_taken, bltu_taken, bgeu_taken;
   wire      b_taken;
+  // jalr dest
+  wire [31:0] jalr_dest;
 
   assign rs1 = inst[19:15];
   assign rs2 = inst[24:20];
@@ -335,29 +343,29 @@ module datapath(input         clk, reset,
   //If ALU output is negative and overflow
   assign bge_taken = branch & f3bge & (Nflag == Vflag);
   //If ALU output makes carry
-  assign bltu_taken = branch & f3bltu & Cflag;
+  assign bltu_taken = branch & f3bltu & ~Cflag;
   //If ALU output not makes carry
-  assign bgeu_taken = branch & f3bgeu & (~Cflag);
+  assign bgeu_taken = branch & f3bgeu & Cflag;
   //If any branches taken
   assign b_taken = beq_taken | bne_taken | blt_taken | bge_taken | bltu_taken | bgeu_taken;
 
   //Assign branch destination
-  assign branch_dest = se_br_imm[31:0];
+  assign branch_dest = pc + se_br_imm[31:0];
   assign jal_dest 	= aluout;
+  assign jalr_dest  = aluout & ~1;
 
   //Select PC 
   always @(posedge clk, posedge reset)
   begin
-     if (reset) begin
-      pc <= 32'b0;
-     end
+     if (reset) pc <= 32'b0;
 	  else 
-
 	  begin
 	      if (b_taken) // If branch_taken, PC is branch destination
 				pc <= #`simdelay branch_dest;
-		   else if (jal) // If jal, PC is jal destination
+		   else if (jal) //  If jal, PC is jal destination
 				pc <= #`simdelay jal_dest;
+       else if(jalr) 
+        pc <= #`simdelay jalr_dest;
 		   else           // else just pc + 4
 				pc <= #`simdelay (pc + 4);
 	  end
@@ -412,8 +420,8 @@ module datapath(input         clk, reset,
 	begin
 		if	     (auipc | lui)			alusrc2[31:0] = auipc_lui_imm[31:0];
 		else if (alusrc & memwrite)	alusrc2[31:0] = se_imm_stype[31:0];
-		else if (alusrc)					alusrc2[31:0] = se_imm_itype[31:0];
     else if (jal & alusrc)    alusrc2[31:0] = se_jal_imm[31:0];
+		else if (alusrc)					alusrc2[31:0] = se_imm_itype[31:0];
 		else									alusrc2[31:0] = rs2_data[31:0];
 	end
 	
@@ -424,7 +432,7 @@ module datapath(input         clk, reset,
 	// Data selection for writing to RF
 	always@(*)
 	begin
-		if	     (jal)			rd_data[31:0] = pc + 4;
+		if	     (jal | jalr)			rd_data[31:0] = pc + 4;
 		else if (memtoreg)	rd_data[31:0] = MemRdata;
 		else					    	rd_data[31:0] = aluout;
 	end
